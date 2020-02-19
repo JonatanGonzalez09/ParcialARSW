@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class MoneyLaundering{
+public class MoneyLaundering {
 
     private TransactionAnalyzer transactionAnalyzer;
     private TransactionReader transactionReader;
@@ -20,14 +20,12 @@ public class MoneyLaundering{
     private AtomicInteger amountOfFilesProcessed;
     private static int numHilos = 5;
 
-    public static void main(String[] args){
-
+    public static void main(String[] args) {
         MoneyLaundering moneyLaundering = new MoneyLaundering();
         Thread processingThread = new Thread(() -> moneyLaundering.processTransactionData());
         processingThread.start();
-        while(true)
-        {
-            Scanner scanner = new Scanner(System.in);
+        while(true){
+            Scanner scanner = new Scanner("dataFeb-19-2020_0.csv");
             String line = scanner.nextLine();
             if(line.contains("exit"))
                 break;
